@@ -23,12 +23,12 @@ const botName = 'Racing Maze BOOT';
 // Run when client connects
 io.on('connection', socket => {
 
-  socket.on('creerPartie', ({username, namePartie, type, level}) => {
+  socket.on('creerPartie', ({nomUtilisateur, namePartie, type, level}) => {
     //..
   });
 
-  socket.on('joindrePartiePublique', ({ username, room }) => {
-    const user = userJoin(socket.id, username, room);
+  socket.on('joindrePartiePublique', ({ nomUtilisateur, room }) => {
+    const user = userJoin(socket.id, nomUtilisateur, room);
 
     socket.join(user.room);
 
@@ -40,7 +40,7 @@ io.on('connection', socket => {
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} est là !`)
+        formatMessage(botName, `${user.nomUtilisateur} est là !`)
       );
 
     // Send users and room info
@@ -50,8 +50,8 @@ io.on('connection', socket => {
     });
   });
 
-  socket.on('joindrePartiePrivee', ({username, codeAcces}) => {
-    const user = userJoin(socket.id, username, codeAcces);
+  socket.on('joindrePartiePrivee', ({nomUtilisateur, codeAcces}) => {
+    const user = userJoin(socket.id, nomUtilisateur, codeAcces);
     socket.join(user.codeAcces);
     //..
   });
