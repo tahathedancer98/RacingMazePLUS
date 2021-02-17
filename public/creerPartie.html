@@ -4,13 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
 			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 		<title>Rejoindre une partie</title>
 	</head>
 	<body>
@@ -44,9 +45,9 @@
 					</div>
 					__________________________________________________________
 					<div id="typePartie" >
-						<span>Type de partie  :  </span>&nbsp;&nbsp;<input id="partiePublique" type="radio" name="partietoggle" value="partiePublique" onclick="radioCheck()"/>
+						<span>Type de partie  :  </span>&nbsp;&nbsp;<input id="partiePublique" type="radio" name="partietoggle" value="partiePublique"/>
 						<label for="partiePublique">Publique</label>
-						<input id="partiePrivee" type="radio" name="partietoggle" value="partiePrivee" onclick="radioCheck()" />
+						<input id="partiePrivee" type="radio" name="partietoggle" value="partiePrivee" />
 						<label for="partiePrivee">Privée</label>
 					</div>
 					__________________________________________________________
@@ -60,26 +61,12 @@
 						<label for="menuDifficile">Difficile</label>
 					</div>
                     __________________________________________________________
-					<button id="btnRejoindre" type="submit" class="btn">Creer la partie</button>
+					<button id="btnRejoindre" type="submit" class="btn" onclick="creerPartie();">Creer la partie</button>
+					<a href="./index.html" class="menuMAZE">Retour</a>
 				</form>
 			</main>
 		</div>
+		<script src="./js/main.js"></script>
+		
 	</body>
-    <script>
-        document.getElementById('btnRejoindre').onclick = () => {
-            if(document.getElementById('partieName').value == ""){
-                alert('veuillez remplir le nom de la partie');
-                return 0;
-            }else if(document.getElementById('partiePublique').checked != true && document.getElementById('partiePrivee').checked != true){
-                alert('choisir le type');
-                return 0;
-            }else if(document.getElementById('menuFacile').checked != true && document.getElementById('menuIntermediaire').checked != true && document.getElementById('menuDifficile').checked != true ){
-                alert('choisir le niveau');
-                return 0;
-            }else{
-                // code pour envoyé les données et créer la partie en fonction des données récupérées depuis le formulaire
-            }
-            
-        };
-    </script>
 </html>

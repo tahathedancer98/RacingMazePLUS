@@ -2,17 +2,66 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
-const codesAcces = document.getElementById('');
+
+const checkPublicParty = document.getElementById('partiePublique');
+const checkPrivateParty = document.getElementById('partiePrivee');
+
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
 const socket = io();
+console.log(socket);
+
+// Creation de la partie : 
+
+function creerPartie() {
+  var nomUser = document.getElementById('username');
+  var nomPartie = document.getElementById('partieName');
+  var difficulte = 0, type = 0;
+  // Conditions pour Nom partie et l'utilisateur
+  nomUser = nomUser.value;
+  nomPartie = nomPartie.value;
+    // Conditions pour récuperer le type de la partie : 
+    if(document.getElementById('partiePublique').checked != true && document.getElementById('partiePrivee').checked != true){
+      alert('choisir le type');
+    }else
+    if(document.getElementById('partiePublique').checked == true){
+      type = 1;
+    }else if(document.getElementById('partiePrivee').checked == true){
+      type = 2;
+    }
+    if(document.getElementById('menuFacile').checked != true && document.getElementById('menuIntermediaire').checked != true && document.getElementById('menuDifficile').checked != true){
+      alert('choisir la difficulté');
+    }else if(document.getElementById('menuFacile').checked == true){
+      // Conditions pour récuperer la difficultée de la partie : 
+        difficulte = 1;
+      }else if(document.getElementById('menuIntermediaire').checked == true){
+        difficulte = 2;
+      }else if(document.getElementById('menuDifficile').checked == true){
+        difficulte = 3; 
+      } 
+      if(document.getElementById('menuFacile').checked != true && document.getElementById('menuIntermediaire').checked != true && document.getElementById('menuDifficile').checked != true){
+        alert('choisir la difficulté');
+      }else{
+        console.log(nomUser, nomPartie, type, difficulte);
+        // Probleme dans cette ligne : Uncaught ReferenceError: can't access lexical declaration 'socket' 
+        // before initialization
+        // creerPartie http://localhost:3000/js/main.js:50
+        // onclick http://localhost:3000/creerPartie.html:1
+        // socket.emit('creerPartie', ({nomPartie}));
+      }
+  }
+  
+ 
+  
 
 // Joindre la partie (Publique Ou Privée) 
 socket.emit('joindrePartiePublique', { username, room });
 // socket.emit('joindrePartiePrivee', { username, codeAcces });
+// creer partie 
+
 
 // Get room and users
 socket.on('roomUsers', ({ room, users }) => {
@@ -22,7 +71,6 @@ socket.on('roomUsers', ({ room, users }) => {
 
 // Message from server
 socket.on('message', (message) => {
-  console.log(message);
   outputMessage(message);
 
   // Scroll down
@@ -78,7 +126,9 @@ function outputUsers(users) {
     const li = document.createElement('li');
     li.innerText = user.username;
     userList.appendChild(li);
+    
   });
+  
 }
 
 //Prompt the user before leave chat room

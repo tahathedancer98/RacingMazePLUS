@@ -10,74 +10,15 @@
 			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 		<title>Rejoindre une partie</title>
 	</head>
 	<body>
-		<div class="join-container">
-			<header class="join-header">
-				<h1><i class="fas fa-smile"></i> Racing Maze</h1>
-			</header>
-			<main class="join-main">
-				<form action="chat.html">
-					<div class="form-control">
-						<label for="username">Nom d'utilisateur</label>
-						<input
-							type="text"
-							name="username"
-							id="username"
-							placeholder="Entrer le nom d'utilisateur..."
-							required
-						/>
-					</div>
-					<label></label>
-					<div id="typePartie" >
-						<span>Type de partie  :  </span>&nbsp;&nbsp;<input id="partiePublique" type="radio" name="partietoggle" value="partiePublique" onclick="radioCheck()"/>
-						<label for="partiePublique">Publique</label>
-						<input id="partiePrivee" type="radio" name="partietoggle" value="partiePrivee" onclick="radioCheck()" />
-						<label for="partiePrivee">Privée</label>
-					</div>
-					__________________________________________________________
-					<!-- Pour la partie création partie (niveau du jeu) -->
-					<!-- <div id="niveauJeu">
-						<input id="menuFacile" type="radio" name="niveautoggle" value="Facile" />
-						<label for="menuFacile">Facile</label>
-						<input id="menuIntermediaire" type="radio" name="niveautoggle" value="Intermediaire" />
-						<label for="menuIntermediaire">Intermédiaire</label>
-						<input id="menuDifficile" type="radio" name="niveautoggle" value="Difficile" />
-						<label for="menuDifficile">Difficile</label>
-					</div> -->
-					<div id="divPrive" style="display: none;">
-						<label for="room">Partie privée</label>
-						<input type="text" placeholder="Entrer le code d'acces..."/>
-					</div>
-					<div id="divPublique" class="form-control" style="display: none;">
-						<label for="room">Partie publique</label>
-						<!-- On peut récuperer les données des parties publique est les afficher ici -->
-						<select name="room" id="room">
-							<option value="LpCiasieRoom">Partie 1</option>
-							<option value="Partie">Partie 2</option>
-							<option value="Partie">Partie 3</option>
-							<option value="Partie">Partie 4</option>
-							<option value="Partie">Partie 5</option>
-							<option value="Partie">Partie 6</option>
-						</select>
-					</div>
-					<button id="btnRejoindre" type="submit" class="btn">Rejoindre la partie</button>
-				</form>
-			</main>
-		</div>
+		<h1>Racing Maze</h1>
+		<h2>Page d'acceuil...</h2>
+
+		<a href="./rejoindrePartie.html" class="menuMAZE">Rejoindre une Partie</a><br/>
+		<a href="./creerPartie.html" class="menuMAZE">Creer une Partie</a>
 	</body>
-	<script>
-		function radioCheck(){
-			if(document.getElementById('partiePublique').checked == true){
-				document.getElementById('divPublique').style.display='block';
-				document.getElementById('divPrive').style.display='none';
-			}else if(document.getElementById('partiePrivee').checked == true){
-				document.getElementById('divPublique').style.display='none';
-				document.getElementById('divPrive').style.display='block';
-			}
-		}
-		
-	</script>
+	
 </html>

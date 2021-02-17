@@ -247,3 +247,13 @@ a {
 span{
 	color:black;
 }
+
+.menuMAZE{
+	color:black;
+	text-align: center;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.menuMAZE:hover{
+	color:white;
+	background-color: black;
+}
